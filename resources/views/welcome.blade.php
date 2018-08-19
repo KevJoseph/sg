@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    RONNY**
+                    KEVIN
                 </div>
 
                 <div class="links">
