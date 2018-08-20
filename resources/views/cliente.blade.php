@@ -4,26 +4,27 @@
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Registro de Clientes</a>
+              <a href="">REGISTRO DE CLIENTES</a>
             </li>
             
           </ol>
 
     <div class="row">
     	<div class="col-md-6">  		
-			<div class="card">
-			  <h5 class="card-header">Cliente Envio</h5>
-			  <div class="card-body">
+			<div class="card border-primary">
+			  <h5 class="card-header text-primary">Cliente Envio</h5>
+			  <div class="card-body text-primary">
 			   
 		<form>
 		  <div class="form-row">
-	   
-		    <div class="form-group col-md-1">
-		      <label for="inputApellido">DNI</label>
-		    </div>
-		    <div class="form-group col-md-3">
-		    	<input type="text" class="form-control" id="inputDNI" placeholder="8 digitos">
-		    </div>
+		  		<div class="form-group col-md-6">
+			      <label for="inputDNI">DNI</label>
+			      <input type="text" class="form-control" id="inputDNI" placeholder="8 digitos">
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="inputRUC">RUC</label>
+			      <input type="text" class="form-control" id="inputRUC" placeholder="11 digitos">
+			    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="inputNombre">Nombres</label>
@@ -32,6 +33,10 @@
 		  <div class="form-group">
 		    <label for="inputApellido">Apellidos</label>
 		    <input type="text" class="form-control" id="inputApellido" placeholder="Apellidos completos">
+		  </div>
+		  <div class="form-group">
+		    <label for="inputApellido">Phone</label>
+		    <input type="text" class="form-control" id="inputCelular" placeholder="Numero Telefono o celular">
 		  </div>
 		  <div class="form-row">
 		    <div class="form-group col-md-4">
@@ -77,18 +82,20 @@
 
 
         	<div class="col-md-6">  		
-			<div class="card">
-			  <h5 class="card-header">Cliente Recibe</h5>
-			  <div class="card-body">
+			<div class="card border-danger">
+			  <h5 class="card-header text-danger">Cliente Recibe</h5>
+			  <div class="card-body text-danger">
 			   
 		<form>
 		  <div class="form-row">
-		    <div class="form-group col-md-1">
-		      <label for="inputApellido">DNI</label>
-		    </div>
-		    <div class="form-group col-md-3">
-		    	<input type="text" class="form-control " id="inputDNI" placeholder="8 digitos">
-		    </div>
+		  	  <div class="form-group col-md-6">
+			      <label for="inputDNI">DNI</label>
+			      <input type="text" class="form-control" id="inputDNI" placeholder="8 digitos">
+			    </div>
+			    <div class="form-group col-md-6">
+			      <label for="inputRUC">RUC</label>
+			      <input type="text" class="form-control" id="inputRUC" placeholder="11 digitos">
+			    </div>
 		  </div>
 		  <div class="form-group">
 		    <label for="inputNombre">Nombres</label>
@@ -97,6 +104,10 @@
 		  <div class="form-group">
 		    <label for="inputApellido">Apellidos</label>
 		    <input type="text" class="form-control" id="inputApellido" placeholder="Apellidos completos">
+		  </div>
+		  <div class="form-group">
+		    <label for="inputApellido">Phone</label>
+		    <input type="text" class="form-control" id="inputCelular" placeholder="Numero Telefono o celular">
 		  </div>
 		  <div class="form-row">
 			    <div class="form-group col-md-4">
@@ -135,12 +146,12 @@
 		      </select>
 		    </div>
 		  </div>
-		  <button type="submit" class="btn btn-primary float-right">Guardar Cliente</button>
+		  <button type="submit" class="btn btn-danger float-right">Guardar Cliente</button>
 		</form>
 			  </div>
     	</div>
     </div>
 </div>
-
+ <br>
 
 @endsection
