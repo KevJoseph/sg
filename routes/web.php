@@ -19,3 +19,8 @@ Route::get('/panel', function () {
     return view('panel');
 });
 
+Route::get('/cliente', function () {
+    return view('cliente');
+});
+
+

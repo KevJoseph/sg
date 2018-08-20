@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Dashboard</title>
+    <title>SG Administrativo</title>
 
     <!-- Bootstrap core CSS-->
     <link href="template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +21,10 @@
     <link href="template/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
 
     <!-- Custom styles for this template-->
+
+    <!-- CDN BOOTSTRAP KEVIN-->
     <link href="template/css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   </head>
 
@@ -29,7 +32,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html">Start Bootstrap</a>
+      <a class="navbar-brand mr-1" href="index.html">SGcourier</a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -95,8 +98,13 @@
         <li class="nav-item active">
           <a class="nav-link" href="index.html">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
+            <span>Panel Administrativo</span>
           </a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{ url('cliente') }}">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Clientes</span></a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -124,6 +132,7 @@
             <i class="fas fa-fw fa-table"></i>
             <span>Tables</span></a>
         </li>
+        <li class="nav-item">
       </ul>
 
       <div id="content-wrapper">
