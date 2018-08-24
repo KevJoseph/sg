@@ -24,3 +24,7 @@ Route::get('/cliente', function () {
 });
 
 
+Route::get('/almacen', function () {
+    return view('almacen');
+});
+
