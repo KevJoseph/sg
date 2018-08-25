@@ -103,7 +103,7 @@
         </li>
         <li class="nav-item">
         <a class="nav-link" href="{{ url('cliente') }}">
-            <i class="fas fa-fw fa-folder"></i>
+            <i class="fas fa-fw fa-user"></i>
             <span>Clientes</span></a>
         </li>
         <li class="nav-item dropdown">

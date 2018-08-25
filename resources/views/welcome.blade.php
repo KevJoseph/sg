@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    KEVIN
+                    Kasdasd
                 </div>
 
                 <div class="links">
