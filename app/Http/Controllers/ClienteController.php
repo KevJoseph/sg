@@ -17,59 +17,68 @@ class ClienteController extends Controller
         return view('cliente');
     }
     
-    public function insertClienteN(){
+    public function insertClienteN(Request $request){
         $cliente = new Cliente;
-        $cliente->cod = '77167125';
-        $cliente->telefono = '981113620';
+        $cliente->cod = $request->input('dni');
+        $cliente->telefono = $request->input('telefono');
+        $cliente->correo = $request->input('correo');
         $cliente->tipo = 'Natural';
-        $cliente->departamento = 'Lima';
-        $cliente->provincia = 'Cañete';
-        $cliente->distrito = 'Quilmana';
+        $cliente->departamento = $request->input('departamento');
+        $cliente->provincia = $request->input('provincia');
+        $cliente->distrito = $request->input('distrito');
         $cliente->estado = 'A';
         $cliente->save();
         
         $cnatural = new cnatural;
-        $cnatural->nombre = 'Kevin Joseph';
-        $cnatural->apellido = 'Ramos Chumpitaz';
-        $cnatural->cod_cn = '77167125';
+        $cnatural->nombre = $request->input('nombre');
+        $cnatural->apellido = $request->input('apellido');
+        $cnatural->cod_cn = $request->input('dni');
         $cnatural->save();
-        
+        return redirect('clientesn');
         
     }
     
-        public function insertClienteJ(){
+        public function insertClienteJ(Request $request){
         $cliente = new Cliente;
-        $cliente->cod = '12345678910';
+        $cliente->cod = $request->input('ruc');
+        $cliente->telefono = $request->input('telefono');
+        $cliente->correo = $request->input('correo');
         $cliente->tipo = 'Juridico';
-        $cliente->telefono = '981113620';
-        $cliente->departamento = 'Lima';
-        $cliente->provincia = 'Lima';
-        $cliente->distrito = 'Lima';
+        $cliente->departamento = $request->input('departamento');
+        $cliente->provincia = $request->input('provincia');
+        $cliente->distrito = $request->input('distrito');
         $cliente->estado = 'A';
         $cliente->save();
         
         $cjuridico = new cjuridico;
-        $cjuridico->razonsocial = 'Infotech';
-        $cjuridico->cod_cj = '12345678910';
+        $cjuridico->razonsocial = $request->input('razonsocial');
+        $cjuridico->cod_cj = $request->input('ruc');
         $cjuridico->save();
-        
+        return redirect('clientesj');
         
     }
     
     
-    public function mostrarClientes(){
+    public function mostrarClientesN(){
         
         $clientesN = DB::table('clientes')
             ->join('cnatural', 'clientes.cod', '=', 'cnatural.cod_cn')
             ->select('clientes.cod', 'cnatural.nombre', 'cnatural.apellido','clientes.telefono','clientes.correo','clientes.departamento','clientes.provincia','clientes.distrito')
             ->get();
         
+        return view('clientesn')
+            ->with('clientesN', $clientesN);
+    }
+    
+        
+    public function mostrarClientesJ(){
+        
         $clientesJ = DB::table('clientes')
             ->join('cjuridico', 'clientes.cod', '=', 'cjuridico.cod_cj')
             ->select('clientes.cod', 'cjuridico.razonsocial', 'clientes.telefono','clientes.correo','clientes.departamento','clientes.provincia','clientes.distrito')
             ->get();
-        return view('cliente')
-            ->with('clientesN', $clientesN)
+        
+        return view('clientesj')
             ->with('clientesJ', $clientesJ);
     }
     

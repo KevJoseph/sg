@@ -23,6 +23,8 @@ Route::get('/almacen', function () {
     return view('almacen');
 });
 
-Route::get('/insert', 'ClienteController@insertClienteN');
-Route::get('/cliente', 'ClienteController@mostrarClientes');
+Route::post('clientes/insertn', 'ClienteController@insertClienteN');
+Route::post('clientes/insertj', 'ClienteController@insertClienteJ');
 
+Route::get('/clientesn', 'ClienteController@mostrarClientesN');
+Route::get('/clientesj', 'ClienteController@mostrarClientesJ');

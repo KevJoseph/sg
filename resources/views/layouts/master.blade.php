@@ -101,10 +101,17 @@
             <span>Panel Administrativo</span>
           </a>
         </li>
-        <li class="nav-item">
-        <a class="nav-link" href="{{ url('cliente') }}">
+          <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-fw fa-user"></i>
-            <span>Clientes</span></a>
+            <span>Clientes</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <!--h6 class="dropdown-header">:</h6-->
+            <a class="dropdown-item" href="{{ url('clientesn') }}"> <i class="fas fa-user"></i> Persona Natural</a>
+            <a class="dropdown-item" href="{{ url('clientesj') }}"> <i class="fas fa-building"></i> Persona Juridica</a>
+            <a class="dropdown-item" href="#">Reporte Clientes</a>
+          </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
