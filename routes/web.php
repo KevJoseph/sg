@@ -19,12 +19,10 @@ Route::get('panel', function () {
     return view('panel');
 });
 
-Route::get('/cliente', function () {
-    return view('cliente');
-});
-
-
 Route::get('/almacen', function () {
     return view('almacen');
 });
+
+Route::get('/insert', 'ClienteController@insertClienteN');
+Route::get('/cliente', 'ClienteController@mostrarClientes');
 
