@@ -2,7 +2,7 @@
 
 @section('content')
       <div class="alert alert-primary" role="alert">
-        Registros de Clientes 
+        Registros de Empresas 
         
          <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#ModalJuridica" style="margin-right: 5px;">Nueva Empresa <i class="fas fa-plus"></i></button>
      

@@ -114,7 +114,7 @@
                       <td>{{$clientesN->correo}}</td>
                       <td>{{$clientesN->departamento}},{{$clientesN->provincia}},{{$clientesN->distrito}}</td>
                       <td>
-                          <button class="btn btn-success"><i class="far fa-edit"></i></button>
+                          <button class="btn btn-success" href=""><i class="far fa-edit"></i></button>
                           <button class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
                       </td>
                     </tr>

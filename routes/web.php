@@ -23,6 +23,11 @@ Route::get('/almacen', function () {
     return view('almacen');
 });
 
+Route::get('/encomienda', function () {
+    return view('encomienda');
+});
+
+
 Route::post('clientes/insertn', 'ClienteController@insertClienteN');
 Route::post('clientes/insertj', 'ClienteController@insertClienteJ');
 
