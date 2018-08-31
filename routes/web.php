@@ -11,6 +11,7 @@
 |
 */
 
+Auth::routes();
 Route::get('/', function () {
     return view('welcome');
 });
@@ -31,5 +32,7 @@ Route::get('/encomienda', function () {
 Route::post('clientes/insertn', 'ClienteController@insertClienteN');
 Route::post('clientes/insertj', 'ClienteController@insertClienteJ');
 
-Route::get('/clientesn', 'ClienteController@mostrarClientesN');
+Route::get('/clientesn', 'ClienteController@mostrarClientesN')->name('clientesn');
 Route::get('/clientesj', 'ClienteController@mostrarClientesJ');
+
+Route::get('/panel', 'HomeController@index')->name('home');

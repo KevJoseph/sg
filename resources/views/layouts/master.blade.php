@@ -8,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
+ <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>SG-Admin</title>
 
@@ -32,7 +33,7 @@
 
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-      <a class="navbar-brand mr-1" href="index.html">SGcourier</a>
+      <a class="navbar-brand mr-1" href="index.html">SGcouriercargo       </a>
 
       <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
@@ -77,15 +78,26 @@
           </div>
         </li>
         <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-user-circle fa-fw"></i>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+           </a>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a href="#" class="dropdown-toggle dropdown-item text-primary" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+            {{ Auth::user()->name }}
+            </a>
             <a class="dropdown-item" href="#">Settings</a>
             <a class="dropdown-item" href="#">Activity Log</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            <a href="{{ route('logout') }}" class="dropdown-item"
+                onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+                                            Logout
+            </a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+            </form>
           </div>
+           
         </li>
       </ul>
 
@@ -113,10 +125,17 @@
             <a class="dropdown-item" href="#">Reporte Clientes</a>
           </div>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{{ url('encomienda') }}">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="{{ url('encomienda') }}">
             <i class="fas fa-fw fa-box"></i>
-            <span>Encomiendas</span></a>
+            <span>Encomiendas</span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+            <!--h6 class="dropdown-header">:</h6-->
+            <a class="dropdown-item" href="{{url('encomienda')}}" > Nuevo</a>
+            <a class="dropdown-item" href="{{ url('clientesj') }}"> Enviados</a>
+            <a class="dropdown-item" href="#">Recibidos</a>
+          </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -137,12 +156,12 @@
         <li class="nav-item">
           <a class="nav-link" href="charts.html">
             <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
+            <span>Transporte</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="tables.html">
             <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+            <span>Configuracion</span></a>
         </li>
         <li class="nav-item">
       </ul>
@@ -193,7 +212,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="{{ route('logout') }}" >Logout</a>
           </div>
         </div>
       </div>
@@ -219,5 +238,5 @@
     <script src="template/js/demo/chart-area-demo.js"></script>
 
   </body>
-
+    <script src="{{ asset('js/app.js') }}"></script>
 </html>

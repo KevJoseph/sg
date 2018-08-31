@@ -8,7 +8,12 @@
             </li>
             <li class="breadcrumb-item active">Overview</li>
           </ol>
-
+                   sdsdsd
+                    @if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
     <p>Este apartado aparecerá en la seccioooooooooooooooooón "content".</p>
 
 
