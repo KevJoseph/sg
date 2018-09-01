@@ -19,6 +19,9 @@ class CreateEncomiendasTable extends Migration
             $table->string('pago');
             $table->string('codc_o');
             $table->string('codc_d');
+            $table->string('oficina_o');
+            $table->string('oficina_d');
+            $table->string('precio');
             $table->foreign('codc_o')->references('cod')->on('clientes');
             $table->foreign('codc_d')->references('cod')->on('clientes');
             $table->timestamps();

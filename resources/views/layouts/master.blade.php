@@ -133,8 +133,8 @@
           <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <!--h6 class="dropdown-header">:</h6-->
             <a class="dropdown-item" href="{{url('encomienda')}}" > Nuevo</a>
-            <a class="dropdown-item" href="{{ url('clientesj') }}"> Enviados</a>
-            <a class="dropdown-item" href="#">Recibidos</a>
+            <a class="dropdown-item" href="{{ url('enviados') }}"> Enviados</a>
+            <a class="dropdown-item" href="{{url('recibidos')}}">Recibidos</a>
           </div>
         </li>
         <li class="nav-item dropdown">

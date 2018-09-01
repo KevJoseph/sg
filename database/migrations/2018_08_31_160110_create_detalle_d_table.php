@@ -15,11 +15,10 @@ class CreateDetalleDTable extends Migration
     {
         Schema::create('detalle_d', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('fecha');
-            $table->string('hora');
+            $table->string('cod_enc');
+            $table->string('destino');
             $table->string('estado');
-            $table->string('cod_orig');
-            $table->foreign('cod_orig')->references('cod_o')->on('detalle_o');
+            $table->foreign('cod_enc')->references('cod_e')->on('encomiendas');
             $table->timestamps();
         });
     }

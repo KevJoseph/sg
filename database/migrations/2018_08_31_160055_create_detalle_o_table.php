@@ -14,14 +14,14 @@ class CreateDetalleOTable extends Migration
     public function up()
     {
         Schema::create('detalle_o', function (Blueprint $table) {
-            $table->string('cod_o')->primary();
+            $table->increments('cod_o');
             $table->string('cod_enc');
             $table->string('fecha');
             $table->string('hora');
             $table->string('estado');
             $table->foreign('cod_enc')->references('cod_e')->on('encomiendas');
             $table->timestamps();   
-        });
+        }); 
     }
 
     /**

@@ -28,11 +28,15 @@ Route::get('/encomienda', function () {
     return view('encomienda');
 });
 
+Route::get('prueba', 'EncomiendaController@prueba');
 
 Route::post('clientes/insertn', 'ClienteController@insertClienteN');
 Route::post('clientes/insertj', 'ClienteController@insertClienteJ');
+Route::post('encomienda/insert', 'EncomiendaController@insertEncomienda');
 
 Route::get('/clientesn', 'ClienteController@mostrarClientesN')->name('clientesn');
 Route::get('/clientesj', 'ClienteController@mostrarClientesJ');
+Route::get('/enviados', 'EncomiendaController@mostrarEnviados');
+Route::get('/recibidos', 'EncomiendaController@mostrarRecibidos');
 
 Route::get('/panel', 'HomeController@index')->name('home');
