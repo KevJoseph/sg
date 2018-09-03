@@ -1,6 +1,24 @@
 @extends('layouts.master')
 
 @section('content')
+<?php date_default_timezone_set('America/Lima'); ?>
+   
+   <?php  
+
+	//$result = mysql_query("SELECT * FROM club", $connection);
+	$array = array();
+
+
+foreach($clientesN as $clientesN){
+    $equipo = $clientesN->cod;
+    array_push($array, $equipo); // equipos
+}
+
+?>
+   
+   
+   
+   
     <div class="alert alert-dark" role="alert">
         Nota: Si el remitente o consignado no se encuentra registrado click en el boton.
         
@@ -31,21 +49,21 @@
                 </div>
                 <div class="form-group col-md-3 offset-md-1">
 			      <label for="inputcodigo">Fecha</label>
-			      <input type="text" name="fecha" class="form-control" id="inputDNI" placeholder="07/01/1995">
+			      <input type="text" name="fecha" class="form-control" id="inputDNI"  placeholder="<?php echo date('Y-m-d');?>" disabled>
 			    </div>
 			     <div class="form-group col-md-2">
 			      <label for="inputcodigo">Hora</label>
-			      <input type="text" name="hora" class="form-control" id="inputDNI" placeholder="04:16 am">
+			      <input type="text" name="hora" class="form-control" id="inputDNI"  placeholder="<?php echo date('h:m');?>" disabled>
 			    </div>
 		  </div>
 		  <div class="form-row">
 		  		<div class="form-group col-md-3">
 			      <label for="inputcodigo">Codigo de Remitente</label>
-			      <input type="text" name="remitente" class="form-control" id="inputDNI" placeholder="DNI O RUC">
+			      <input  name="remitente"  id="tag" placeholder="DNI O RUC">
 			    </div>
 			    <div class="form-group col-md-9">
 			      <label for="inputRUC">Datos personales</label>
-			      <input name="datospersonales" type="text" class="form-control" id="inputRUC" placeholder="">
+			      <input name="datospersonales" type="text" class="form-control" id="nombre" placeholder="">
 			    </div>
 		  </div>
 		  <div class="form-row text-danger">
@@ -93,4 +111,40 @@
     </div>
 </div>
  <br>
+ 
+ 
+ 	<script type="text/javascript">
+		$(document).ready(function () {
+			var items = <?= json_encode($array) ?>;
+
+			$("#tag").autocomplete({
+				source: items,
+				select: function (event, item) {
+					var params = {
+						cod: item.item.value
+					};
+					$.get("encomienda_br", params, function (response) {
+						var json = JSON.parse(response);
+						if (json.status == 200){
+							$("#nombre").html('Ronny');
+							//$("#avatar").attr("src", json.icono);
+						}else{
+                           $("#nombre").html('Maycol');
+						}
+					}); // ajax
+				}
+			});
+		});
+	</script>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
 @endsection

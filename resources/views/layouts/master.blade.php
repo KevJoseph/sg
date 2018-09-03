@@ -8,7 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
- <meta name="csrf-token" content="{{ csrf_token() }}">
+ <meta name="csrf-token" content="{{ csrf_token()}}">
+ 
+
+
+
 
     <title>SG-Admin</title>
 
@@ -25,8 +29,14 @@
 
     <!-- CDN BOOTSTRAP KEVIN-->
     <link href="template/css/sb-admin.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
+   <script src="{{ asset('js/app.js') }}"></script>
+   
+   
+ 
+   
   </head>
 
   <body id="page-top">
@@ -224,7 +234,6 @@
 
     <!-- Core plugin JavaScript-->
     <script src="template/vendor/jquery-easing/jquery.easing.min.js"></script>
-
     <!-- Page level plugin JavaScript-->
     <script src="template/vendor/chart.js/Chart.min.js"></script>
     <script src="template/vendor/datatables/jquery.dataTables.js"></script>
@@ -235,8 +244,15 @@
 
     <!-- Demo scripts for this page-->
     <script src="template/js/demo/datatables-demo.js"></script>
-    <script src="template/js/demo/chart-area-demo.js"></script>
+<script src="template/js/demo/chart-area-demo.js"></script>
 
+
+
+
+  	<script type="text/javascript" src="js/jquery-1.12.1.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="js/jquery-ui.css">
+	<script type="text/javascript" src="js/jquery-ui.js"></script>
+   
   </body>
-    <script src="{{ asset('js/app.js') }}"></script>
+    
 </html>

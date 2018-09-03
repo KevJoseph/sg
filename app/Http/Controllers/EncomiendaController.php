@@ -18,6 +18,45 @@ class EncomiendaController extends Controller
         $this->middleware('auth');
     }
     
+    
+    public function index(Request $request){
+        $oficina = Auth::user()->oficina;
+        
+        $clientesN = DB::table('clientes')
+            ->join('cnatural', 'clientes.cod', '=', 'cnatural.cod_cn')
+            ->select('clientes.cod', 'cnatural.nombre', 'cnatural.apellido','clientes.telefono','clientes.correo','clientes.departamento','clientes.provincia','clientes.distrito')
+            ->get();
+        
+        return view('encomienda')
+            ->with('clientesN', $clientesN);      
+    }
+    
+    public function buscarRemitente(Request $request){
+        $oficina = Auth::user()->oficina;
+        
+    $cod = $_GET['cod'];
+
+            $clientesN = DB::table('clientes')
+            ->join('cnatural', 'clientes.cod', '=', 'cnatural.cod_cn')
+            ->select('clientes.cod', 'cnatural.nombre', 'cnatural.apellido','clientes.telefono','clientes.correo','clientes.departamento','clientes.provincia','clientes.distrito')
+            ->where('clientes.cod',$cod)
+            ->get();    
+        
+
+
+        if (count($clientesN) > 0) {
+            $equipo = $clientesN;
+            $equipo->status = 200;
+            echo json_encode($equipo);
+        }else{
+            $error = array('status' => 400);
+            echo json_encode((object)$error);
+        }
+    
+        
+        
+    }
+    
     public function insertEncomienda(Request $request){
         $oficina = Auth::user()->oficina;
         //Oficina del usuario

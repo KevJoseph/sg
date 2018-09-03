@@ -24,7 +24,7 @@ Route::get('/almacen', function () {
     return view('almacen');
 });
 
-Route::get('/encomienda', function () {
+Route::get('/encomiendass', function () {
     return view('encomienda');
 });
 
@@ -32,6 +32,9 @@ Route::get('prueba', 'EncomiendaController@prueba');
 
 Route::post('clientes/insertn', 'ClienteController@insertClienteN');
 Route::post('clientes/insertj', 'ClienteController@insertClienteJ');
+Route::get('encomienda', 'EncomiendaController@index');
+Route::get('encomienda_br', 'EncomiendaController@buscarRemitente');
+
 Route::post('encomienda/insert', 'EncomiendaController@insertEncomienda');
 
 Route::get('/clientesn', 'ClienteController@mostrarClientesN')->name('clientesn');
@@ -40,3 +43,8 @@ Route::get('/enviados', 'EncomiendaController@mostrarEnviados');
 Route::get('/recibidos', 'EncomiendaController@mostrarRecibidos');
 
 Route::get('/panel', 'HomeController@index')->name('home');
+
+
+Route::get('table', function () {
+    return view('pruebas');
+});
