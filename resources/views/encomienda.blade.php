@@ -63,17 +63,17 @@ foreach($clientesN as $clientesN){
 			    </div>
 			    <div class="form-group col-md-9">
 			      <label for="inputRUC">Datos personales</label>
-			      <input name="datospersonales" type="text" class="form-control" id="nombre" placeholder="">
+			      <input name="datospersonales" type="text" class="form-control"  id="nombre"  placeholder="">
 			    </div>
 		  </div>
 		  <div class="form-row text-danger">
 		  		<div class="form-group col-md-3">
 			      <label for="inputcodigo">Codigo de Consignado</label>
-			      <input type="text" class="form-control" id="inputDNI" placeholder="DNI O RUC" name="consignado">
+			      <input type="text" class="form-control" id="tag2" placeholder="DNI O RUC" name="consignado">
 			    </div>
 			    <div class="form-group col-md-9">
 			      <label for="inputRUC">Datos personales</label>
-			      <input type="text" class="form-control" id="inputRUC" name="datospersonales2" placeholder="">
+			      <input type="text" class="form-control" id="nombre2" name="datospersonales2" placeholder="">
 			    </div>
 		  </div>
 		  <div class="form-row">
@@ -116,7 +116,6 @@ foreach($clientesN as $clientesN){
  	<script type="text/javascript">
 		$(document).ready(function () {
 			var items = <?= json_encode($array) ?>;
-
 			$("#tag").autocomplete({
 				source: items,
 				select: function (event, item) {
@@ -124,14 +123,28 @@ foreach($clientesN as $clientesN){
 						cod: item.item.value
 					};
 					$.get("encomienda_br", params, function (response) {
-						var json = JSON.parse(response);
-						if (json.status == 200){
-							$("#nombre").html('Ronny');
-							//$("#avatar").attr("src", json.icono);
+						if (response){
+							$("#nombre").val(response);
 						}else{
-                           $("#nombre").html('Maycol');
+
 						}
-					}); // ajax
+					});
+				}
+			});
+            
+            	$("#tag2").autocomplete({
+				source: items,
+				select: function (event, item) {
+					var params = {
+						cod: item.item.value
+					};
+					$.get("encomienda_br", params, function (response) {
+						if (response){
+							$("#nombre2").val(response);
+						}else{
+
+						}
+					});
 				}
 			});
 		});

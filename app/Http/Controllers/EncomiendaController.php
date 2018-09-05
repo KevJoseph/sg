@@ -19,40 +19,55 @@ class EncomiendaController extends Controller
     }
     
     
-    public function index(Request $request){
+    public function index(Request $request){ //ronny
         $oficina = Auth::user()->oficina;
         
         $clientesN = DB::table('clientes')
-            ->join('cnatural', 'clientes.cod', '=', 'cnatural.cod_cn')
-            ->select('clientes.cod', 'cnatural.nombre', 'cnatural.apellido','clientes.telefono','clientes.correo','clientes.departamento','clientes.provincia','clientes.distrito')
+            ->select('clientes.cod')
             ->get();
         
         return view('encomienda')
             ->with('clientesN', $clientesN);      
     }
     
-    public function buscarRemitente(Request $request){
+    public function buscarRemitente(Request $request){ //Ronny
         $oficina = Auth::user()->oficina;
         
     $cod = $_GET['cod'];
-
+        
             $clientesN = DB::table('clientes')
             ->join('cnatural', 'clientes.cod', '=', 'cnatural.cod_cn')
             ->select('clientes.cod', 'cnatural.nombre', 'cnatural.apellido','clientes.telefono','clientes.correo','clientes.departamento','clientes.provincia','clientes.distrito')
             ->where('clientes.cod',$cod)
             ->get();    
         
-
-
-        if (count($clientesN) > 0) {
+        if (count($clientesN) > 0) {      
             $equipo = $clientesN;
-            $equipo->status = 200;
-            echo json_encode($equipo);
+            foreach ($clientesN as $clientesN){
+            echo $clientesN->cod.' '.$clientesN->apellido.' '.$clientesN->nombre;
+            }   
         }else{
-            $error = array('status' => 400);
-            echo json_encode((object)$error);
+             $clientesJ = DB::table('clientes')
+            ->join('cjuridico', 'clientes.cod', '=', 'cjuridico.cod_cj')
+            ->select('clientes.cod', 'cjuridico.razonsocial', 'clientes.telefono','clientes.correo','clientes.departamento','clientes.provincia','clientes.distrito')
+            ->where('clientes.cod',$cod)
+            ->get();
+            if (count($clientesJ) > 0) {      
+                $equipo = $clientesJ;
+                foreach ($clientesJ as $clientesJ){
+                echo $clientesJ->cod.' '.$clientesJ->razonsocial;
+                }   
+            }else{
+                echo "No encontrado";
+            }
         }
-    
+         
+         
+        
+        
+ 
+        
+        
         
         
     }
