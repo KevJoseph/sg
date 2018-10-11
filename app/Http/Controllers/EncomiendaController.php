@@ -100,7 +100,8 @@ class EncomiendaController extends Controller
         $destino->cod_enc = $request->input('codigo');
         $destino->save();
         
-        return view('encomienda');
+        return redirect('encomienda');  
+
     }
     
     public function mostrarEnviados(Request $request){

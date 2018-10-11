@@ -35,11 +35,11 @@ foreach($clientesN as $clientesN){
 		<form action="{{ URL('encomienda/insert') }}" method="POST">
         {{ csrf_field() }}
 		  <div class="form-row">
-		  		<div class="form-group col-md-3">
+		  	<div class="form-group col-md-3">
 			      <label for="inputcodigo">Codigo Encomienda</label>
 			      <input type="text" class="form-control" id="inputDNI" placeholder="0001" name="codigo">
 			    </div>
-                <div class="form-group col-md-2">
+                <div class="form-group col-md-3">
                   <label for="inputServicio">Tipo de Servicio</label>
                   <select id="inputServicio" class="form-control" name="servicio">
                     <option selected>Seleccionar</option>
@@ -47,11 +47,11 @@ foreach($clientesN as $clientesN){
                     <option value="Cargo">Cargo</option>
                   </select>
                 </div>
-                <div class="form-group col-md-3 offset-md-1">
+                <div class="form-group col-md-3">
 			      <label for="inputcodigo">Fecha</label>
 			      <input type="text" name="fecha" class="form-control" id="inputDNI"  placeholder="<?php echo date('Y-m-d');?>" disabled>
 			    </div>
-			     <div class="form-group col-md-2">
+			     <div class="form-group col-md-3">
 			      <label for="inputcodigo">Hora</label>
 			      <input type="text" name="hora" class="form-control" id="inputDNI"  placeholder="<?php echo date('h:m');?>" disabled>
 			    </div>
@@ -59,21 +59,21 @@ foreach($clientesN as $clientesN){
 		  <div class="form-row">
 		  		<div class="form-group col-md-3">
 			      <label for="inputcodigo">Codigo de Remitente</label>
-			      <input  name="remitente"  id="tag" placeholder="DNI O RUC">
+			      <input  name="remitente" class="form-control"  id="rCod" placeholder="DNI O RUC">
 			    </div>
 			    <div class="form-group col-md-9">
 			      <label for="inputRUC">Datos personales</label>
-			      <input name="datospersonales" type="text" class="form-control"  id="nombre"  placeholder="">
+			      <input name="datospersonales" type="text" class="form-control"  id="datospersonales"  placeholder="">
 			    </div>
 		  </div>
 		  <div class="form-row text-danger">
 		  		<div class="form-group col-md-3">
 			      <label for="inputcodigo">Codigo de Consignado</label>
-			      <input type="text" class="form-control" id="tag2" placeholder="DNI O RUC" name="consignado">
+			      <input type="text" class="form-control" id="cCod" placeholder="DNI O RUC" name="consignado">
 			    </div>
 			    <div class="form-group col-md-9">
 			      <label for="inputRUC">Datos personales</label>
-			      <input type="text" class="form-control" id="nombre2" name="datospersonales2" placeholder="">
+			      <input type="text" class="form-control" id="datospersonales2" name="datospersonales2" placeholder="">
 			    </div>
 		  </div>
 		  <div class="form-row">
@@ -91,7 +91,7 @@ foreach($clientesN as $clientesN){
 		    </div>
 		  </div>
 		  <div class="form-row">
-		    <div class="form-group col-md-4">
+		    <div class="form-group col-md-3">
 		      <label for="inputPagar">Tipo de Pago</label>
 		      <select id="inputPagar" name="pago" class="form-control">
 		        <option selected>Seleccionar</option>
@@ -116,7 +116,7 @@ foreach($clientesN as $clientesN){
  	<script type="text/javascript">
 		$(document).ready(function () {
 			var items = <?= json_encode($array) ?>;
-			$("#tag").autocomplete({
+			$("#rCod").autocomplete({
 				source: items,
 				select: function (event, item) {
 					var params = {
@@ -124,7 +124,7 @@ foreach($clientesN as $clientesN){
 					};
 					$.get("encomienda_br", params, function (response) {
 						if (response){
-							$("#nombre").val(response);
+							$("#datospersonales").val(response);
 						}else{
 
 						}
@@ -132,7 +132,7 @@ foreach($clientesN as $clientesN){
 				}
 			});
             
-            	$("#tag2").autocomplete({
+            	$("#cCod").autocomplete({
 				source: items,
 				select: function (event, item) {
 					var params = {
@@ -140,7 +140,7 @@ foreach($clientesN as $clientesN){
 					};
 					$.get("encomienda_br", params, function (response) {
 						if (response){
-							$("#nombre2").val(response);
+							$("#datospersonales2").val(response);
 						}else{
 
 						}
@@ -151,13 +151,8 @@ foreach($clientesN as $clientesN){
 	</script>
  
  
- 
- 
- 
- 
- 
- 
- 
- 
+
+
  
 @endsection
+
